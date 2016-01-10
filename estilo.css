@@ -4,7 +4,7 @@ html, body { margin: 0; padding: 0; height:100%; width:100%;}
 	text-align:center;
 	font-size:300%;
 	color:black;
-	background-color:"#C4C4C4";
+	background-color:#edf3f4;
 }
 .espacio1 {
 	position: relative;
@@ -12,8 +12,8 @@ html, body { margin: 0; padding: 0; height:100%; width:100%;}
 	font-size:200%;
 	width:auto;
 	height:5%;
-	color:white; 
-	background-color:"#C4C4C4"; 
+	color:black; 
+	background-color:#edf3f4; 
 }
 .botonfrigo1{
 	float:left;
@@ -23,7 +23,7 @@ html, body { margin: 0; padding: 0; height:100%; width:100%;}
 	color:black; 
 	margin:0px;	
 	display:inline-block;
-	background-color:green; 
+	background-color:#b1c4c9; 
 }
 .congelador{
 	float:left;
@@ -32,7 +32,7 @@ html, body { margin: 0; padding: 0; height:100%; width:100%;}
 	font-size:200%;
 	display:inline-block;
 	color:white; 
-	background-color:red; 
+	background-color:#b1c4c9; 
 }
 .boton2{
 	position: relative;
@@ -43,6 +43,7 @@ html, body { margin: 0; padding: 0; height:100%; width:100%;}
 	margin:auto;
 }
 .button1{
+	
 	float:left;
 	width:33%;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 	<head>
 		<title>Interfaz</title>
 		<link rel="stylesheet" type="text/css" href="estilo.css">
@@ -9,59 +9,221 @@
 			<div class="espacio1" style="height:20%">INTERFAZ</div>
 			<div class="hora" style="height:60%; width:100%">
 				<div class="button1" style="width:33%;">
-					<button style="width:60%; height:60%;"><img src="smile.png" height="100%"></button>
+					<button style="width:60%; height:60%; margin-top:5%;"><img src="smile.png" height="100%" id="alerta"></button>
 				</div>
 				<div style="float:left; width:34%;" id="hora"></div>
 				<div class="button1" style="width:33%;">
-					<button style="width:60%; height:60%;"><img src="eco.png" height="100%"></button>
+					<button style="width:60%; height:60%; margin-top:5%;" onclick="econo()"><img src="econo.png" height="100%" id="eco"></button>
 				</div>
 			</div>
-			<div class="espacio1" style="height:20%">espacio2</div>
+			<div class="espacio1" style="height:20%"></div>
 		</div>
 		<div style="height:75%;">
-			<div style="height:33%;">
-				<div class="botonfrigo1" style="width:25%; height:100%;">
-					<button style="width:30%; height:30%;" >+</button>
+			<div style="height:33%; border-top:2px solid black;" >
+				<div class="botonfrigo1" style="width:25%; height:100%;" id="frigo1">
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="subirfrigo()">+</button>
 				</div>
-				<div class="botonfrigo1" style="width:50%; height:100%;">
-					<button class="boton1">motorfrigorifico</button>
+				<div class="botonfrigo1" style="width:50%; height:99%; border-bottom:2px solid black" id="frigo2">
+					<button class="boton1" style="margin-top:5%;" onclick="apagarfrigo()">motorfrigorifico</button>
 				</div>
-				<div class="congelador" style="width:25%; height:100%;">
-					<button style="width:30%; height:30%;">+</button>
+				<div class="congelador" style="width:24.5%; height:100%; border-left:2px solid black" id="cong1">
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="subircong()">+</button>
 				</div>
 			</div>
 			<div style="height:34%;">
-				<div class="botonfrigo1" style="width:25%; height:100%;" id="tempFrigoConf"></div>
-				<div style="float:left; width:50%; height:100%; ">
-					<div class="boton2" style="width:50%; height:100%">
-						<button style="width:100%; height:100%"><img src="estadistica.png" width="50%" height="100%"></button>
+				<div class="botonfrigo1" style="width:25%; height:100%; border-right:2px solid black;" id="tempFrigo"></div>
+				
+				<div style="float:left; width:50%; height:100%;">
+					<div class="boton2" style="width:50%; height:100%;">
+						<button style="width:100%; height:100%"><img src="estadistica.png" width="50%"></button>
 					</div>
-					<div class="boton2" style=" width:50%; height:100%">
+					<div class="boton2" style=" width:50%; height:100%;">
 						<button style="width:100%; height:100%"><img src="idioma.png" width="50%"></button>
 					</div>
 				</div>
-				<div class="congelador" style="width:25%; height:100%;" id="tempCongConf"></div>
+				<div class="congelador" style="width:24%; height:100%; border-left:2px solid black" id="tempCong"></div>
 			</div>
 			<div style="height:33%;">
-				<div class="botonfrigo1" style="width:25%; height:100%;">
-					<button style="width:30%; height:30%;">-</button>
+				<div class="botonfrigo1" style="width:25%; height:100%;border-right:2px solid black" id="frigo4">
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="bajarfrigo()">-</button>
 				</div>
-				<div class="congelador" style="width:50%; height:100%;">
-					<button class="boton1">motorcongelador</button>
+				<div class="congelador" style="width:50%; height:100%; border-top:2px solid black" id="cong3">
+					<button class="boton1" style="margin-top:5%;" onclick="apagarcong()">motorcongelador</button>
 				</div>
-				<div class="congelador" style="width:25%; height:100%;">
-					<button style="width:30%; height:30%;">-</button>
+				<div class="congelador" style="width:24%; height:100%;" id="cong4">
+					<button style="width:30%; height:30%; margin-top:5%;"onclick="bajarcong()">-</button>
 				</div>
 			</div>
 		</div>
 		<script src="electro.js"></script>
 		<script>
+			var puertaf=false;
+			var puertac=false;
+			var tempfrigorifico=5;
+			var tempcongelador=-20;
+			var frigoencendido=true;
+			var congencendido=true;
+			var ecoencendido=false;
 			function cambioHora (hora) {
 				document.getElementById("hora").innerHTML = hora.getHours() + ":" + hora.getMinutes() + ":" + hora.getSeconds();
-				ajustarMotores();
-				estadisticas();
 			}
+			function cambioTempFrigo(temp){
+				document.getElementById("tempFrigo").innerHTML = (Math.round(temp*100)/100)+"&deg;" ;
+				if(temp>tempfrigorifico && frigoencendido==true && puertaf== false){
+					electro.motorFrigorifico(true);
+				}
+				else{
+					electro.motorFrigorifico(false);
+				}
+			}
+			function cambioTempCong(temp){
+				document.getElementById("tempCong").innerHTML = (Math.round(temp*100)/100)+"&deg;";
+				if(temp>tempcongelador && congencendido==true && puertac==false){
+					electro.motorCongelador(true);
+				}
+				else{
+					electro.motorCongelador(false);
+					}
+				}
+			function subirfrigo(){
+				tempfrigorifico++;
+				ecoencendido=false;
+				}
+				
+			function bajarfrigo(){
+				tempfrigorifico--;
+				ecoencendido=false;
+				}
+			function subircong(){
+				tempcongelador++;
+				ecoencendido=false;
+				}
+			function bajarcong(){
+				tempcongelador--;
+				ecoencendido=false;
+				}
+				
+			function apagarfrigo(){
+				if(frigoencendido == true){
+					frigoencendido=false;
+					document.getElementById("frigo1").style.backgroundColor="#6d858c";
+					document.getElementById("frigo2").style.backgroundColor="#6d858c";
+					document.getElementById("tempFrigo").style.backgroundColor="#6d858c";
+					document.getElementById("frigo4").style.backgroundColor="#6d858c";
+					electro.motorFrigorifico(false);
+				}
+				else{
+					frigoencendido=true;
+					document.getElementById("frigo1").style.backgroundColor="#b1c4c9";
+					document.getElementById("frigo2").style.backgroundColor="#b1c4c9";
+					document.getElementById("tempFrigo").style.backgroundColor="#b1c4c9";
+					document.getElementById("frigo4").style.backgroundColor="#b1c4c9";
+				}
+			}
+				
+			function apagarcong(){
+				if(congencendido == true){
+					congencendido=false;
+					document.getElementById("cong1").style.backgroundColor="#6d858c";
+					document.getElementById("cong3").style.backgroundColor="#6d858c";
+					document.getElementById("tempCong").style.backgroundColor="#6d858c";
+					document.getElementById("cong4").style.backgroundColor="#6d858c";
+					electro.motorCongelador(false);
+				}
+				else{
+					congencendido=true;
+					document.getElementById("cong1").style.backgroundColor="#b1c4c9";
+					document.getElementById("cong3").style.backgroundColor="#b1c4c9";
+					document.getElementById("tempCong").style.backgroundColor="#b1c4c9";
+					document.getElementById("cong4").style.backgroundColor="#b1c4c9";
+				}
+			}
+			
+			function econo(){
+
+			if(ecoencendido==false){
+				document.getElementById("eco").src = "eco.png";
+				frigoguar=tempfrigorifico;
+				congguar=tempcongelador;
+				tempfrigorifico=8;
+				tempcongelador=-16;
+				ecoencendido=true;
+				}
+			else{
+				document.getElementById("eco").src = "econo.png";
+				tempfrigorifico=frigoguar;
+				tempcongelador=congguar;
+				ecoencendido=false;
+				}
+			
+			}
+			
+			function alertas(){
+				if(puertaf==true){
+				electro.alarma(true);
+				document.getElementById("alerta").src = "puerta.png";
+				}
+				else{
+				document.getElementById("alerta").src = "smile.png";
+					if(tempfrigorifico<0 || tempfrigorifico>16 || tempcongelador<-20 || tempcongelador>0){
+					document.getElementById("alerta").src = "frio.png";
+					electro.alarma(true);
+					}
+					else{
+					document.getElementById("smile").src = "smile.png"
+					electro.alarma(false);
+					}
+				}
+				if(puertac==true){
+				electro.alarma(true);
+				document.getElementById("alerta").src = "puerta.png";
+				}
+				else{
+					if(tempfrigorifico<0 || tempfrigorifico>16 || tempcongelador<-24 || tempcongelador>0){
+					document.getElementById("alerta").src = "frio.png";
+					electro.alarma(true);
+					}
+					else{
+					document.getElementById("smile").src = "smile.png"
+					electro.alarma(false);
+					}
+				}
+
+			}
+			var timeoutfrigo;
+			var timeoutcong;
+			
+			function puertafrigo(abierta){
+				if(abierta==true){
+				puertaf=true;
+				electro.motorFrigorifico(false);
+				timeoutfrigo=setTimeout(function(){alertas()},15000);
+				}
+				else{
+				puertaf=false;
+				clearTimeout(timeoutfrigo);
+				electro.alarma(false);
+				}
+			}
+			
+			function puertacong(abierta){
+				if(abierta==true){
+				puertac=true;
+				electro.motorCongelador(false);
+				timeoutcong=setTimeout(function(){alertas()},15000);
+				}
+				else{
+				puertac=false;
+				clearTimeout(timeoutfrigo);
+				electro.alarma(false);
+				}
+			}
+			
+			electro.puertaCongelador(puertacong);
+			electro.puertaFrigorifico(puertafrigo);
 			electro.hora(cambioHora);
+			electro.tempCongelador(cambioTempCong);
+			electro.tempFrigorifico(cambioTempFrigo);
 		</script>
 	</body>
 </html>
