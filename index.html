@@ -9,7 +9,7 @@
 			<div class="espacio1" style="height:20%">INTERFAZ</div>
 			<div class="hora" style="height:60%; width:100%">
 				<div class="button1" style="width:33%;">
-					<button style="width:60%; height:60%; margin-top:5%;"><img src="smile.png" height="100%" id="alerta"></button>
+					<button style="width:60%; height:60%; margin-top:5%;"><img src="smile.png" height="100%" id="alerta" onclick="smile()"></button>
 				</div>
 				<div style="float:left; width:34%;" id="hora"></div>
 				<div class="button1" style="width:33%;">
@@ -21,13 +21,13 @@
 		<div style="height:75%;">
 			<div style="height:33%; border-top:2px solid black;" >
 				<div class="botonfrigo1" style="width:25%; height:100%;" id="frigo1">
-					<button style="width:30%; height:30%; margin-top:5%;" onclick="subirfrigo()">+</button>
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="subirfrigo()"><big><big><big><big>+</big></big></big></big></button>
 				</div>
 				<div class="botonfrigo1" style="width:50%; height:99%; border-bottom:2px solid black" id="frigo2">
-					<button class="boton1" style="margin-top:5%;" onclick="apagarfrigo()">motorfrigorifico</button>
+					<button class="boton1" style="margin-top:5%;" onclick="apagarfrigo()"><big><big>motorfrigorifico</big></big></button>
 				</div>
 				<div class="congelador" style="width:24.5%; height:100%; border-left:2px solid black" id="cong1">
-					<button style="width:30%; height:30%; margin-top:5%;" onclick="subircong()">+</button>
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="subircong()"><big><big><big><big>+</big></big></big></big></button>
 				</div>
 			</div>
 			<div style="height:34%;">
@@ -45,13 +45,13 @@
 			</div>
 			<div style="height:33%;">
 				<div class="botonfrigo1" style="width:25%; height:100%;border-right:2px solid black" id="frigo4">
-					<button style="width:30%; height:30%; margin-top:5%;" onclick="bajarfrigo()">-</button>
+					<button style="width:30%; height:30%; margin-top:5%;" onclick="bajarfrigo()"><big><big><big><big>-</big></big></big></big></button>
 				</div>
 				<div class="congelador" style="width:50%; height:100%; border-top:2px solid black" id="cong3">
-					<button class="boton1" style="margin-top:5%;" onclick="apagarcong()">motorcongelador</button>
+					<button class="boton1" style="margin-top:5%;" onclick="apagarcong()"><big><big>motorcongelador</big></big></button>
 				</div>
 				<div class="congelador" style="width:24%; height:100%;" id="cong4">
-					<button style="width:30%; height:30%; margin-top:5%;"onclick="bajarcong()">-</button>
+					<button style="width:30%; height:30%; margin-top:5%;"onclick="bajarcong()"><big><big><big><big>-</big></big></big></big></button>
 				</div>
 			</div>
 		</div>
@@ -163,33 +163,24 @@
 				electro.alarma(true);
 				document.getElementById("alerta").src = "puerta.png";
 				}
-				else{
-				document.getElementById("alerta").src = "smile.png";
-					if(tempfrigorifico<0 || tempfrigorifico>16 || tempcongelador<-20 || tempcongelador>0){
-					document.getElementById("alerta").src = "frio.png";
-					electro.alarma(true);
-					}
+
 					else{
 					document.getElementById("smile").src = "smile.png"
 					electro.alarma(false);
 					}
-				}
+				
 				if(puertac==true){
 				electro.alarma(true);
 				document.getElementById("alerta").src = "puerta.png";
 				}
-				else{
-					if(tempfrigorifico<0 || tempfrigorifico>16 || tempcongelador<-24 || tempcongelador>0){
-					document.getElementById("alerta").src = "frio.png";
-					electro.alarma(true);
-					}
+				
 					else{
 					document.getElementById("smile").src = "smile.png"
 					electro.alarma(false);
 					}
 				}
 
-			}
+			
 			var timeoutfrigo;
 			var timeoutcong;
 			
@@ -197,7 +188,7 @@
 				if(abierta==true){
 				puertaf=true;
 				electro.motorFrigorifico(false);
-				timeoutfrigo=setTimeout(function(){alertas()},15000);
+				timeoutfrigo=setTimeout(function(){alertas()},1000);
 				}
 				else{
 				puertaf=false;
@@ -210,7 +201,7 @@
 				if(abierta==true){
 				puertac=true;
 				electro.motorCongelador(false);
-				timeoutcong=setTimeout(function(){alertas()},15000);
+				timeoutcong=setTimeout(function(){alertas()},1000);
 				}
 				else{
 				puertac=false;
@@ -218,6 +209,7 @@
 				electro.alarma(false);
 				}
 			}
+
 			
 			electro.puertaCongelador(puertacong);
 			electro.puertaFrigorifico(puertafrigo);
