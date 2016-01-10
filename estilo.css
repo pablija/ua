@@ -1,0 +1,52 @@
+html, body { margin: 0; padding: 0; height:100%; width:100%;}
+.hora{
+	position:relative;
+	text-align:center;
+	font-size:300%;
+	color:black;
+	background-color:"#C4C4C4";
+}
+.espacio1 {
+	position: relative;
+	text-align:center;
+	font-size:200%;
+	width:auto;
+	height:5%;
+	color:white; 
+	background-color:"#C4C4C4"; 
+}
+.botonfrigo1{
+	float:left;
+	position: relative;
+	text-align:center;
+	font-size:200%;
+	color:black; 
+	margin:0px;	
+	display:inline-block;
+	background-color:green; 
+}
+.congelador{
+	float:left;
+	position: relative;
+	text-align:center;
+	font-size:200%;
+	display:inline-block;
+	color:white; 
+	background-color:red; 
+}
+.boton2{
+	position: relative;
+	float:left;
+	text-align: center;
+	width:100%;
+	height:90%; 
+	margin:auto;
+}
+.button1{
+	float:left;
+	width:33%;
+}
+.boton1{
+	width:60%; 
+	height:40%;
+}

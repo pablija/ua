@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Interfaz</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+	</head>
+	<body bgcolor="#C4C4C4">
+		<div style="height:25%">
+			<div class="espacio1" style="height:20%">INTERFAZ</div>
+			<div class="hora" style="height:60%; width:100%">
+				<div class="button1" style="width:33%;">
+					<button style="width:60%; height:60%;"><img src="smile.png" height="100%"></button>
+				</div>
+				<div style="float:left; width:34%;" id="hora"></div>
+				<div class="button1" style="width:33%;">
+					<button style="width:60%; height:60%;"><img src="eco.png" height="100%"></button>
+				</div>
+			</div>
+			<div class="espacio1" style="height:20%">espacio2</div>
+		</div>
+		<div style="height:75%;">
+			<div style="height:33%;">
+				<div class="botonfrigo1" style="width:25%; height:100%;">
+					<button style="width:30%; height:30%;" >+</button>
+				</div>
+				<div class="botonfrigo1" style="width:50%; height:100%;">
+					<button class="boton1">motorfrigorifico</button>
+				</div>
+				<div class="congelador" style="width:25%; height:100%;">
+					<button style="width:30%; height:30%;">+</button>
+				</div>
+			</div>
+			<div style="height:34%;">
+				<div class="botonfrigo1" style="width:25%; height:100%;" id="tempFrigoConf"></div>
+				<div style="float:left; width:50%; height:100%;">
+					<div class="boton2" style="width:50%;">
+						<button style="width:90%; height:100%"><img src="estadistica.png" width="50%"></button>
+					</div>
+					<div class="boton2" style=" width:50%;">
+						<button style="width:90%; height:100%"><img src="idioma.png" width="50%"></button>
+					</div>
+				</div>
+				<div class="congelador" style="width:25%; height:100%;" id="tempCongConf"></div>
+			</div>
+			<div style="height:33%;">
+				<div class="botonfrigo1" style="width:25%; height:100%;">
+					<button style="width:30%; height:30%;">-</button>
+				</div>
+				<div class="congelador" style="width:50%; height:100%;">
+					<button class="boton1">motorcongelador</button>
+				</div>
+				<div class="congelador" style="width:25%; height:100%;">
+					<button style="width:30%; height:30%;">-</button>
+				</div>
+			</div>
+		</div>
+		<script src="electro.js"></script>
+		<script>
+			function cambioHora (hora) {
+				document.getElementById("hora").innerHTML = hora.getHours() + ":" + hora.getMinutes() + ":" + hora.getSeconds();
+				ajustarMotores();
+				estadisticas();
+			}
+			electro.hora(cambioHora);
+		</script>
+	</body>
+</html>
